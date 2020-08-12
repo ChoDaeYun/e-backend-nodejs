@@ -66,7 +66,7 @@ exports.signin = [
             if (!errors.isEmpty()) {
                 return apiResponse.validationErrorWithData(res, "Validation Error.", errors.array());
             }else {
-                User.findOne({email:req.body.email}).then(user=>{
+                User.findOne({email:req.body.email,status:0}).then(user=>{
                    if(user){
                        bcrypt.compare(req.body.password,user.password,function (err,same) {
                            if(same){

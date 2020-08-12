@@ -6,13 +6,13 @@
 	},
 	"item": [
 		{
-			"name": "SignIn",
+			"name": "로그인",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"email\":\"chody0116@gmail.com\",\n    \"password\":\"daeyun1234\"\n}",
+					"raw": "{\n    \"email\":\"test@gmail.com\",\n    \"password\":\"test1234\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -37,13 +37,13 @@
 			"response": []
 		},
 		{
-			"name": "SignUp",
+			"name": "회원가입",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"name\":\"daeyun\",\n    \"email\":\"chody0116@gmail.com\",\n    \"password\":\"daeyun1234\"\n}",
+					"raw": "{\n    \"name\":\"daeyun\",\n    \"email\":\"test@gmail.com\",\n    \"password\":\"test1234\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -64,6 +64,71 @@
 					]
 				},
 				"description": "가입요청"
+			},
+			"response": []
+		},
+		{
+			"name": "어드민 로그인",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"admin_id\":\"admin\",\n    \"password\":\"test1234\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/sign/admin",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"sign",
+						"admin"
+					]
+				},
+				"description": "로그인요청"
+			},
+			"response": []
+		},
+		{
+			"name": "어드민 초기계정 생성",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/sign/admincreate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"sign",
+						"admincreate"
+					]
+				},
+				"description": "어드민 생성 "
 			},
 			"response": []
 		},
@@ -138,13 +203,69 @@
 			"response": []
 		},
 		{
-			"name": "회원정보삭제",
+			"name": "회원정보탈퇴요청",
 			"request": {
-				"method": "DELETE",
+				"method": "PUT",
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjE3ZDc5NWYwMDBiMTdiMmM0MDI3ZTgiLCJuYW1lIjoiZGFleXVuIiwiZW1haWwiOiJjaG9keTAxMTZAZ21haWwuY29tIiwiaWF0IjoxNTk1NDA4Nzc3LCJleHAiOjE1OTU0MTIzNzd9.qoWQ7d9uX3hxXqGwRPJ3JkUQQtoUIxTlHYFMfIiZu_s",
+						"type": "text",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjE3ZDc5NWYwMDBiMTdiMmM0MDI3ZTgiLCJuYW1lIjoiZGFleXVuIiwiZW1haWwiOiJjaG9keTAxMTZAZ21haWwuY29tIiwiaWF0IjoxNTk1NDA4Nzc3LCJleHAiOjE1OTU0MTIzNzd9.qoWQ7d9uX3hxXqGwRPJ3JkUQQtoUIxTlHYFMfIiZu_s"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:3000/api/user/withdraw",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"user",
+						"withdraw"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "카테고리조회",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/category",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"category"
+					]
+				},
+				"description": "/api/category\n/api/category/:category_id"
+			},
+			"response": []
+		},
+		{
+			"name": "카테고리추가",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjMzNzA4MTI3Y2MxZTdlMjJlODg4NGUiLCJhZG1pbl9pZCI6ImFkbWluIiwiYXV0aF9sZXYiOjAsImF1dGgiOiJhZG1pbiIsImlhdCI6MTU5NzIxNjIyOSwiZXhwIjoxNTk3MjE5ODI5fQ.LiHBmsth4NEHYZx58N7CbACHsS_7nEz3P65bT-78N0c",
 						"type": "text"
 					},
 					{
@@ -155,19 +276,58 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": ""
+					"raw": "{\n    \"category_id\":\"shirt\",\n    \"name\":\"셔츠\"\n}"
 				},
 				"url": {
-					"raw": "localhost:3000/api/user",
+					"raw": "http://localhost:3000/api/category",
+					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
 						"api",
-						"user"
+						"category"
 					]
-				}
+				},
+				"description": "카테고리 추가 "
+			},
+			"response": []
+		},
+		{
+			"name": "카테고리 노출 이름 변경",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjMzNzA4MTI3Y2MxZTdlMjJlODg4NGUiLCJhZG1pbl9pZCI6ImFkbWluIiwiYXV0aF9sZXYiOjAsImF1dGgiOiJhZG1pbiIsImlhdCI6MTU5NzIxNjIyOSwiZXhwIjoxNTk3MjE5ODI5fQ.LiHBmsth4NEHYZx58N7CbACHsS_7nEz3P65bT-78N0c"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"바지\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/category/pants",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"category",
+						"pants"
+					]
+				},
+				"description": "카테고리 노출 이름 변경\n\n/api/category/:category_id"
 			},
 			"response": []
 		}
